@@ -8,7 +8,7 @@ function Index(){
                 <h1>Employees</h1>
             </div>
 
-            <Link href="/add_employee">
+            <Link href="/employees/addemployee">
                 <h1>Add employee</h1>
             </Link>
         </>
