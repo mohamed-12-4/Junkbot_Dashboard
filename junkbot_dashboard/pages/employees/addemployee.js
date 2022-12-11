@@ -1,6 +1,7 @@
 import { EventNoteTwoTone, NearMeDisabledOutlined } from "@mui/icons-material"
-import { supabase } from "../../supabase"
-
+import  { supabase } from "../../supabase"
+import axios from "axios"
+import { useState } from "react"
 function add_employee() {
   /*
   name
@@ -30,16 +31,23 @@ date	date
 
 is_in_the_building
   */
+  const [name, setName] = useState()
+  const [job_title, setJobTitle] = useState()
+  const [salary, setSalary] = useState()
+  const [age, setAge] = useState()
+  const [joined_in, setJoinedIn] = useState()
+
+
   const handleSubmit = async (event) => {
 
     event.preventDefault()
 /*
     const {data} = {
-      name: event.target.name.value,
-      job_title: event.target.job_title.value,
-      salary: event.target.salary.value,
-      age: event.target.age.value,
-      joined_in: event.target.joined_in.value
+      name: name,
+      job_title: job_title,
+      salary: salary,
+      age: age,
+      joined_in: joined_in
     }
 
     name: data.name,
@@ -53,56 +61,57 @@ is_in_the_building
 
 
 
-    /*
+    console.log(name, salary, age, joined_in, job_title)
+  
     const {error} = await supabase.from('Employees').insert({
-      name: event.target.name.value,
-      job_title: event.target.job_title.value,
-      salary: event.target.salary.value,
-      age: event.target.age.value,
-      joined_in: event.target.joined_in.value,
+      name: name,
+      job_title: job_title,
+      salary: salary,
+      age: age,
+      joined_in: joined_in,
       is_in_the_building: false
     })
 
     if (error) {
       console.log(error)
     }
-    */
 
-    const name = event.target.name.value;
     alert(name)
-
-    const res = await fetch("/api/addemployee",{
-      body: JSON.stringify({
-        name: name,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
+/*
+    const res = await axios.post("/api/addemployee",{
+      name: name
+    }).then(function (response) {
+      console.log(response);
     })
+    .catch(function (error) {
+      console.log(error);
+    });
 
     const resualt = res.json()
 
     alert(`${resualt.name}`)
 
+    */
+
   }
+
   return (
     <div>
       <form onSubmit={ handleSubmit }>
         <label htmlFor="name">Name</label>
-        <input type="text" id="name" name="name" required minLength={3}/>
+        <input type="text" id="name" name="name" onChange={({ target }) => setName(target?.value)} required minLength={3}/>
 
         <label htmlFor="job_title">Job Title</label>
-        <input type="text" id="job_title" name="job_title" required />
+        <input type="text" id="job_title" name="job_title" onChange={({ target }) => setJobTitle(target?.value)} required />
 
         <label htmlFor="Age">Age</label>
-        <input type="number" id="age" name="age" required />
+        <input type="number" id="age" name="age" onChange={({ target }) => setAge(target?.value)} required />
 
         <label htmlFor="salary">Salary</label>
-        <input type="number" id="salary" name="salary" required />
+        <input type="number" id="salary" name="salary" onChange={({ target }) => setSalary(target?.value)} required />
 
         <label htmlFor="joined_in">Joined in</label>
-        <input type="date" id="joined_in" name="joined_in" required />
+        <input type="date" id="joined_in" name="joined_in" onChange={({ target }) => setJoinedIn(target?.value)} required />
 
         <input type="submit" />
       </form>
