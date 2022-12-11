@@ -40,7 +40,6 @@ is_in_the_building
 
   const handleSubmit = async (event) => {
 
-    event.preventDefault()
 /*
     const {data} = {
       name: name,
@@ -76,7 +75,6 @@ is_in_the_building
       console.log(error)
     }
 
-    alert(name)
 /*
     const res = await axios.post("/api/addemployee",{
       name: name
