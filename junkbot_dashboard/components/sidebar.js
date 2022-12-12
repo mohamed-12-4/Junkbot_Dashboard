@@ -19,7 +19,6 @@ import { Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Dashboard', href: '/dashboard', current: false },
   { name: 'Attendance', href: '/attendance', current: false },
   { name: 'Employees', href: '/employees', current: false },
 ]

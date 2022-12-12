@@ -59,7 +59,9 @@ function Index() {
             {data.map((index) => {
               return (
                 <tr>
-                  <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">{index.name}</td>
+                  <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
+                    <Link href={`/employees/${index.id}`}>{index.name}</Link>
+                    </td>
                   <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">{index.job_title}</td>
                   <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">{index.age}</td>
                 </tr>
@@ -81,7 +83,7 @@ function Index() {
 
 export default Index;
 
-/*
+/* 
 {data.map((index) => {
         return <h1>{index.name}</h1>;
       })}

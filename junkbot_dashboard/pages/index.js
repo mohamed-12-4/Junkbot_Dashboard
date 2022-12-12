@@ -12,13 +12,15 @@ export default function Home() {
           <h1
             className="max-w-md text-4xl font-bold text-center md:text-5xl md:text-left"
           >
-            A Dashboard that satisfy business' security needs
+            Dashboard
           </h1>
           <p className="max-w-sm text-center text-darkGrayishBlue md:text-left text-lg">
             It retrives data from the <span className="text-indigo-600">Raspperi PI</span> using AI
           </p>
           
         </div>
+
+
       </div>
   );
 }
