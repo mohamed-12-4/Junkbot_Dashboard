@@ -2,32 +2,33 @@ import Link from "next/link";
 import { supabase } from "../../supabase";
 import { useState, useEffect } from "react";
 
-function Index() {
-  // const { data, error } = await supabase.from("Employees").select("*")
-  const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
+export async function getStaticProps(){
+  const {data, error} = await supabase.from("Attendance").select("*, Employees(*)");
+  if (error) {
+    console.log(error)
+  }
 
-  useEffect(() => {
-    let cancelFetch = false; // to avoid race conditions on React18
-    supabase
-      .from("Attendance")
-      .select("*")
-      .then((res) => {
-        if (!cancelFetch) {
-          setData(res.data);
-          setError(res.error);
-        }
-      });
-    return () => {
-      cancelFetch = true;
-    };
-  }, []);
+  return {
+    props: {
+      data: data
+    }
+  }
+}
+
+
+function Index({ data }) {
+  // const { data, error } = await supabase.from("Employees").select("*")
+
 
   return (
     <>
-      <div className="container flex justify-center align-middle font-xl">
-        <h1 className="flex justify-center font-xl">Attendance</h1>
-      </div>
+      
+      <h1 className="flex justify-center text-2xl">Attendance</h1>
+
+      <h1 className="text-xl text-red-600">
+        Time in GMT format (grenache time zone)
+
+      </h1>
 
       <br />
 
@@ -44,6 +45,12 @@ function Index() {
               scope="col"
               className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
             >
+              Name
+            </th>
+            <th
+              scope="col"
+              className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+            >
               Date
             </th>
           </tr>
@@ -54,6 +61,7 @@ function Index() {
               return (
                 <tr>
                   <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">{index.employee_id}</td>
+                  <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">{index.Employees.name}</td>
                   <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">{index.time}</td>
                 </tr>
               )
