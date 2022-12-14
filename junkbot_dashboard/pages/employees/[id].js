@@ -60,9 +60,11 @@ export default function Id({ data }) {
 
   return (
     <div>
-      <h1>{data.name}</h1>
-      <h1>{data.salary}</h1>
-      <h1>{data.id}</h1>
+      <h1 className='text-2xl'>ID: {data.id}</h1>
+      <h1 className='text-2xl'>Name: {data.name}</h1>
+      <h1 className='text-2xl'>Salary: {data.salary}</h1>
+      <h1 className='text-2xl'>Age: {data.age}</h1>
+      <h1 className='text-2xl'>Joined Since: {data.joined_in}</h1>
     </div>
   )
 }
