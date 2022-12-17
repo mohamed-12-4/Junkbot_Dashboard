@@ -25,8 +25,8 @@ function Index() {
 
   return (
     <>
-      <div className="container flex justify-center align-middle font-xl">
-        <h1 className="flex justify-center font-xl">Employees</h1>
+      <div className="container flex justify-center align-middle text-xl mx-auto">
+        <h1 className="flex justify-center text-xl">Employees</h1>
       </div>
 
       <br />
@@ -34,6 +34,12 @@ function Index() {
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
+          <th
+              scope="col"
+              className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+            >
+              ID
+            </th>
             <th
               scope="col"
               className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
@@ -59,9 +65,12 @@ function Index() {
             {data.map((index) => {
               return (
                 <tr>
-                  <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
+                  <td className="px-6 py-4 text-sm font-medium text-red-900 whitespace-nowrap">
+                    <Link href={`/employees/${index.id}`}>{index.id}</Link>
+                  </td>
+                  <td className="px-6 py-4 text-sm font-medium text-blue-800 whitespace-nowrap">
                     <Link href={`/employees/${index.id}`}>{index.name}</Link>
-                    </td>
+                  </td>
                   <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">{index.job_title}</td>
                   <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">{index.age}</td>
                 </tr>
@@ -72,9 +81,14 @@ function Index() {
           </table>
 
 
-          <button className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-auto mb-2">
+          <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
             <Link href="/employees/addemployee">
               Add Employee
+            </Link>
+          </button>
+          <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+            <Link href="/employees/addphoto">
+              Add Image
             </Link>
           </button>
         </>
