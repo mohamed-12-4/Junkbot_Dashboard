@@ -4,7 +4,7 @@ import axios from "axios"
 import { useState } from "react"
 import { redirect } from "next/dist/server/api-utils"
 import { useRouter } from "next/router"
-function add_photo() {
+function AddPhoto() {
   const [image, setImage] = useState(null)
   const [id, setId] = useState(0)
 
@@ -38,4 +38,4 @@ function add_photo() {
   )
 }
 
-export default add_photo;
+export default AddPhoto;

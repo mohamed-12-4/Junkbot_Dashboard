@@ -4,7 +4,7 @@ import axios from "axios"
 import { useState } from "react"
 import { redirect } from "next/dist/server/api-utils"
 import { useRouter } from "next/router"
-function add_employee() {
+function AddEmployee() {
   /*
   name
 No description
@@ -125,4 +125,4 @@ is_in_the_building
   )
 }
 
-export default add_employee;
+export default AddEmployee;

@@ -64,7 +64,7 @@ function Index() {
           <tbody className="divide-y divide-gray-200">
             {data.map((index) => {
               return (
-                <tr>
+                <tr key={index.id}>
                   <td className="px-6 py-4 text-sm font-medium text-red-900 whitespace-nowrap">
                     <Link href={`/employees/${index.id}`}>{index.id}</Link>
                   </td>
